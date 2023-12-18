@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
-    private Texture texture;
+
 
     private Vector2 position;
     private Vector2 velocity; // скорость (без  ускорения)
@@ -18,19 +18,20 @@ public class Bullet {
         return active;
     }
 
+    public Vector2 getPosition() {
+        return position;
+    }
+
     public Bullet() {
-        this.texture = new Texture("projectile.png");
+
         this.position = new Vector2();
         this.velocity = new Vector2();
         this.active = false;
     }
 
-    public void render (SpriteBatch batch){
-        batch.draw (texture, position.x -8, position.y - 8); //вычитаем половину из картинки для централизации
-    }
 
 
-    public void active (float x, float y, float vx, float vy){
+    public void activate (float x, float y, float vx, float vy){
         this.active = true;
         this.position.set(x, y);
         this.velocity.set(vx, vy);
